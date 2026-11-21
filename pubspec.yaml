@@ -1,0 +1,16 @@
+name: rational_extension
+description: Utility extensions for the popular "rational" package.
+version: 1.0.0
+repository: https://github.com/iLnaar/rational_extension
+
+environment:
+  sdk: ^3.14.0
+
+dependencies:
+  decimal: ^2.0.0
+  int_extension: ^1.1.1
+  rational: ^2.0.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.6
