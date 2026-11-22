@@ -39,12 +39,17 @@ extension RationalExtn on Rational {
     return uInt8List;
   }
 
-  /// Converts this number to a [Decimal] with up to [digits] decimal places,
-  /// without rounding.
+  /// Truncates this number toward zero at the specified decimal scale.
+  ///
+  /// For example, `2` truncates to hundredths, `0` to integers, and `-3` to
+  /// thousands.
   ///
   /// Defaults to [intMaxDigits].
-  Decimal toFloorDecimal([int digits = intMaxDigits]) =>
-      toDecimal(scaleOnInfinitePrecision: digits);
+  Decimal toTruncateDecimal([int digits = intMaxDigits]) {
+    final scale = Rational.fromInt(10).pow(digits);
+    final truncatedNumerator = (this * scale).truncate();
+    return (truncatedNumerator.toRational() / scale).toDecimal();
+  }
 
   /// Converts this number to a [Decimal] and rounds it to [digits] decimal
   /// places.

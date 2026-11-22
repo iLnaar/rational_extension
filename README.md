@@ -28,7 +28,7 @@ void main() {
 
   print(value.isZero); // false
   print(value.isNotZero); // true
-  print(value.toFloorDecimal(4)); // 0.3333
+  print(value.toTruncateDecimal(4)); // 0.3333
   print(value.toRoundDecimal(2)); // 0.33
   print(value.toStringAsFixed(2)); // 0.33
 }
@@ -41,9 +41,9 @@ void main() {
 Import `rational_extension.dart` to use the extension on `Rational`:
 
 - `isZero` and `isNotZero` — check whether the value is zero;
-- `toFloorDecimal([digits])` — converts the value to `Decimal`, using the
-  specified precision for infinite-precision values. Defaults to
-  `intMaxDigits`;
+- `toTruncateDecimal([digits])` — truncates toward zero at the specified
+  decimal scale: `2` means hundredths, `0` means integers, and `-3` means
+  thousands. Defaults to `intMaxDigits`;
 - `toRoundDecimal([digits])` — converts the value to `Decimal` and rounds it to
   the specified number of decimal places. Defaults to `intMaxDigits - 1`;
 - `toStringAsFixed(fractionDigits)` — returns a string with the specified

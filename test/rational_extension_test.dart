@@ -51,22 +51,59 @@ void main() {
       });
     });
 
-    group('toFloorDecimal', () {
-      test('converts repeating values to the requested precision', () {
+    group('toTruncateDecimal', () {
+      test('truncates repeating values toward zero', () {
         expect(
-          Rational.fromInt(1, 3).toFloorDecimal(4),
+          Rational.fromInt(1, 3).toTruncateDecimal(4),
           Decimal.parse('0.3333'),
         );
         expect(
-          Rational.fromInt(-1, 3).toFloorDecimal(4),
+          Rational.fromInt(-1, 3).toTruncateDecimal(4),
           Decimal.parse('-0.3333'),
         );
       });
 
-      test('preserves terminating decimal values', () {
+      test('truncates terminating decimal values toward zero', () {
         expect(
-          Rational.fromInt(7, 8).toFloorDecimal(2),
-          Decimal.parse('0.875'),
+          Rational.fromInt(7, 8).toTruncateDecimal(2),
+          Decimal.parse('0.87'),
+        );
+        expect(
+          Rational.fromInt(-7, 8).toTruncateDecimal(2),
+          Decimal.parse('-0.87'),
+        );
+      });
+
+      test('truncates financial amounts to cents', () {
+        expect(
+          Rational.parse('0.78664').toTruncateDecimal(2),
+          Decimal.parse('0.78'),
+        );
+      });
+
+      test('truncates repeating values exactly near a scale boundary', () {
+        final value = Rational.fromInt(-123, 100) -
+            Rational(BigInt.one, BigInt.from(3) * BigInt.from(10).pow(20));
+
+        expect(value.toTruncateDecimal(2), Decimal.parse('-1.23'));
+      });
+
+      test('supports zero and negative scales', () {
+        expect(
+          Rational.parse('0.65465').toTruncateDecimal(0),
+          Decimal.zero,
+        );
+        expect(
+          Rational.parse('0.65465').toTruncateDecimal(-3),
+          Decimal.zero,
+        );
+        expect(
+          Rational.parse('1234.65').toTruncateDecimal(-3),
+          Decimal.parse('1000'),
+        );
+        expect(
+          Rational.parse('-1234.65').toTruncateDecimal(-3),
+          Decimal.parse('-1000'),
         );
       });
     });
