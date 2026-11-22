@@ -51,12 +51,16 @@ extension RationalExtn on Rational {
     return (truncatedNumerator.toRational() / scale).toDecimal();
   }
 
-  /// Converts this number to a [Decimal] and rounds it to [digits] decimal
-  /// places.
+  /// Rounds this number to the nearest value at the specified decimal scale.
+  ///
+  /// Exact halfway values are rounded away from zero, as with [Decimal.round].
   ///
   /// Defaults to [intMaxDigits] minus one.
-  Decimal toRoundDecimal([int digits = intMaxDigits - 1]) =>
-      toDecimal(scaleOnInfinitePrecision: intMaxDigits).round(scale: digits);
+  Decimal toRoundDecimal([int digits = intMaxDigits - 1]) {
+    final scale = Rational.fromInt(10).pow(digits);
+    final roundedNumerator = (this * scale).round();
+    return (roundedNumerator.toRational() / scale).toDecimal();
+  }
 
   /// Returns a decimal representation with exactly [fractionDigits] digits
   /// after the decimal point.

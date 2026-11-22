@@ -44,8 +44,9 @@ Import `rational_extension.dart` to use the extension on `Rational`:
 - `toTruncateDecimal([digits])` — truncates toward zero at the specified
   decimal scale: `2` means hundredths, `0` means integers, and `-3` means
   thousands. Defaults to `intMaxDigits`;
-- `toRoundDecimal([digits])` — converts the value to `Decimal` and rounds it to
-  the specified number of decimal places. Defaults to `intMaxDigits - 1`;
+- `toRoundDecimal([digits])` — rounds to the nearest value at the specified
+  decimal scale, with halfway values rounded away from zero. Defaults to
+  `intMaxDigits - 1`;
 - `toStringAsFixed(fractionDigits)` — returns a string with the specified
   number of digits after the decimal point;
 - `toBytes()` — encodes the numerator and denominator into 16 bytes: the first
@@ -70,7 +71,7 @@ String parsing errors are not caught and are propagated to the caller.
 
 ## Requirements
 
-- Dart SDK `^3.14.0`
+- Dart SDK `>=2.12.0 <4.0.0.`
 - [`decimal`](https://pub.dev/packages/decimal)
 - [`int_extension`](https://pub.dev/packages/int_extension)
 - [`rational`](https://pub.dev/packages/rational)

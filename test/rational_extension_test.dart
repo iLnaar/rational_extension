@@ -119,6 +119,37 @@ void main() {
 
       test('rounds finite values when precision is reduced', () {
         expect(Rational.fromInt(7, 8).toRoundDecimal(2), Decimal.parse('0.88'));
+        expect(
+          Rational.fromInt(-7, 8).toRoundDecimal(2),
+          Decimal.parse('-0.88'),
+        );
+      });
+
+      test('rounds halfway values away from zero', () {
+        expect(
+            Rational.parse('1.005').toRoundDecimal(2), Decimal.parse('1.01'));
+        expect(
+          Rational.parse('-1.005').toRoundDecimal(2),
+          Decimal.parse('-1.01'),
+        );
+      });
+
+      test('rounds repeating values beyond intMaxDigits precisely', () {
+        expect(
+          Rational.fromInt(1, 3).toRoundDecimal(20),
+          Decimal.parse('0.33333333333333333333'),
+        );
+      });
+
+      test('supports negative scales', () {
+        expect(
+          Rational.parse('1234.5').toRoundDecimal(-3),
+          Decimal.parse('1000'),
+        );
+        expect(
+          Rational.parse('-1500').toRoundDecimal(-3),
+          Decimal.parse('-2000'),
+        );
       });
     });
 
