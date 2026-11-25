@@ -1,3 +1,14 @@
+## 1.0.2
+
+Added:
+- Extended the README and runnable example with two-thirds decimal
+  truncation, rounding, and fixed-formatting examples, showing `0.66` versus
+  `0.67`.
+
+Updated:
+- Excluded `.idea/` and `.gigaide/` directories from published package
+  contents.
+
 ## 1.0.1
 
 Added:

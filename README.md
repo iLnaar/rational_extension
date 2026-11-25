@@ -14,7 +14,7 @@ Or add it to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  rational_extension: ^1.0.0
+  rational_extension: ^1.0.2
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ String parsing errors are not caught and are propagated to the caller.
 
 ## Requirements
 
-- Dart SDK `>=2.12.0 <4.0.0.`
+- Dart SDK `>=2.12.0 <4.0.0`
 - [`decimal`](https://pub.dev/packages/decimal)
 - [`int_extension`](https://pub.dev/packages/int_extension)
 - [`rational`](https://pub.dev/packages/rational)
