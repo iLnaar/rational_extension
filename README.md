@@ -24,7 +24,7 @@ import 'package:rational/rational.dart';
 import 'package:rational_extension/rational_extension.dart';
 
 void main() {
-  final value = Rational.parse('1/3');
+  final value = Rational.fromInt(1, 3);
 
   print(value.isZero); // false
   print(value.isNotZero); // true
