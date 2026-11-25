@@ -5,6 +5,7 @@ import 'package:rational_extension/rational_extension.dart';
 
 void main() {
   final third = Rational.fromInt(1, 3);
+  final twoThirds = Rational.fromInt(2, 3);
 
   // Check whether a rational value is zero.
   print('Is zero: ${third.isZero}'); // false
@@ -14,6 +15,12 @@ void main() {
   print('Truncated to 4 places: ${third.toTruncateDecimal(4)}'); // 0.3333
   print('Rounded to 2 places: ${third.toRoundDecimal(2)}'); // 0.33
   print('Fixed to 2 places: ${third.toStringAsFixed(2)}'); // 0.33
+  print(
+      'Two-thirds truncated to 2 places: ${twoThirds.toTruncateDecimal(2)}'); // 0.66
+  print(
+      'Two-thirds rounded to 2 places: ${twoThirds.toRoundDecimal(2)}'); // 0.67
+  print(
+      'Two-thirds fixed to 2 places: ${twoThirds.toStringAsFixed(2)}'); // 0.67
 
   // Negative scales operate on digits to the left of the decimal point.
   final amount = Rational.parse('1234.56');

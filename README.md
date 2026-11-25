@@ -25,12 +25,16 @@ import 'package:rational_extension/rational_extension.dart';
 
 void main() {
   final value = Rational.fromInt(1, 3);
+  final twoThirds = Rational.fromInt(2, 3);
 
   print(value.isZero); // false
   print(value.isNotZero); // true
   print(value.toTruncateDecimal(4)); // 0.3333
   print(value.toRoundDecimal(2)); // 0.33
   print(value.toStringAsFixed(2)); // 0.33
+  print(twoThirds.toTruncateDecimal(2)); // 0.66
+  print(twoThirds.toRoundDecimal(2)); // 0.67
+  print(twoThirds.toStringAsFixed(2)); // 0.67
 }
 ```
 
