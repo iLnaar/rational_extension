@@ -14,7 +14,7 @@ Or add it to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  rational_extension: ^1.0.2
+  rational_extension: ^1.0.3
 ```
 
 ## Usage

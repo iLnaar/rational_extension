@@ -1,3 +1,10 @@
+## 1.0.3
+
+Updated:
+- Set explicit upper bounds for the `decimal` (`3.2.7`), `int_extension`
+  (`1.1.4`), and `rational` (`2.2.3`) dependency ranges while preserving the
+  existing lower bounds.
+
 ## 1.0.2
 
 Added:
